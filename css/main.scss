@@ -3,6 +3,17 @@
 ---
 @charset "utf-8";
 
+$heading-bg: white;
+$title-section-bg: white;
+$body-bg: white;
+$footer-bg: white;
+
+$footer-height: 60px;
+
+$navbar-default-bg: $heading-bg;
+$navbar-margin-bottom: 0;
+$navbar-border-radius: 0;
+
 @import "bootstrap";
 @import "base";
 @import "layout";
