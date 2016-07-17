@@ -13,8 +13,14 @@
                     <img alt="Cole" src="{{site.baseurl}}/images/cole.jpg" class="img-rounded" />
                 </a>
             </div>
+            <h1 class="navbar-text">{{site.title}}</h1>
             <div class="collapse navbar-collapse" id="navbar-collapsible-area">
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-link" href="{{site.baseurl}}/">
+                            Blog
+                        </a>
+                    </li>
                     {% for my_page in site.pages %}
                         {% if my_page.title %}
                             <li>

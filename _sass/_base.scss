@@ -1,5 +1,15 @@
 .navbar {
     border-bottom-width: $section-border-height;
+
+    h1 {
+        font-size: 20px;
+        font-weight: normal;
+        line-height: $line-height-computed;
+    }
+}
+
+.navbar-text {
+    margin-left: 0;
 }
 
 .navbar-brand {
@@ -16,8 +26,20 @@
 
 main {
     header {
+        color: $title-section-color;
         background-color: $title-section-bg-color;
+        font-size: 17px;
         border-bottom: $section-border-height solid mix($title-section-bg-color, $body-bg-color);
+
+        h2 {
+            font-size: 25px;
+            font-weight: normal;
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 0;
+        }
     }
 }
 
