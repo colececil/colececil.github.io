@@ -6,6 +6,15 @@
         font-weight: normal;
         line-height: $line-height-computed;
     }
+
+    .navbar-toggle {
+        background-color: $btn-default-bg;
+        border-style: none;
+    }
+
+    .navbar-toggle:hover {
+        background-color: darken($btn-default-bg, 10%);
+    }
 }
 
 .navbar-text {
@@ -22,7 +31,6 @@
         border-top: 0;
     }
 }
-
 
 main {
     header {
