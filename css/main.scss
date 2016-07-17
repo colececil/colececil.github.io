@@ -4,11 +4,12 @@
 @charset "utf-8";
 
 $heading-color: white;
-$heading-bg-color: #9ab87a;
+$heading-bg-color: #4f993d;
 $title-section-color: white;
-$title-section-bg-color: #708b75;
-$body-bg-color: #ddd8c4;
-$footer-bg-color: #444b6e;
+$title-section-bg-color: #87bba2;
+$body-bg-color: #e8f1f2;
+$footer-color: white;
+$footer-bg-color: #1d1e18;
 
 $standard-margin: 20px;
 $section-border-height: 4px;
@@ -17,12 +18,15 @@ $footer-height: 60px;
 $navbar-default-color: $heading-color;
 $navbar-default-link-color: $heading-color;
 $navbar-default-link-active-color: $heading-color;
+$navbar-default-link-hover-color: $heading-color;
 $navbar-default-bg: $heading-bg-color;
 $navbar-margin-bottom: 0;
 $navbar-default-border: mix($heading-bg-color, $title-section-bg-color);
 $navbar-border-radius: 0;
 
 $body-bg: $body-bg-color;
+
+$btn-default-bg: #dce0d9;
 
 @import "bootstrap";
 @import "base";

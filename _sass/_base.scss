@@ -44,6 +44,16 @@ main {
 }
 
 footer {
+    color: $footer-color;
     background-color: $footer-bg-color;
     border-top: $section-border-height solid mix($body-bg-color, $footer-bg-color);
+
+    a {
+        color: $footer-color;
+        text-decoration: underline;
+    }
+
+    a:hover {
+        color: $footer-color;
+    }
 }
