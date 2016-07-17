@@ -1,5 +1,5 @@
 main {
-    padding-top: $navbar-height;
+    padding-top: $navbar-height + $section-border-height;
 }
 
 html {
@@ -8,12 +8,21 @@ html {
 }
 
 body {
-    margin-bottom: $footer-height;
+    margin-bottom: $footer-height + $section-border-height;
 }
 
 footer {
     position: absolute;
     bottom: 0;
-    height: $footer-height;
+    height: $footer-height + $section-border-height;
     width: 100%;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.row {
+    margin-top: $standard-margin;
+    margin-bottom: $standard-margin;
 }

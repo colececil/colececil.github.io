@@ -1,9 +1,27 @@
+.navbar {
+    border-bottom-width: $section-border-height;
+}
+
+.navbar-brand {
+    padding-top: 0;
+
+    img {
+        border: 3px solid $heading-color;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-top: 0;
+    }
+}
+
+
 main {
     header {
-        background-color: $title-section-bg;
+        background-color: $title-section-bg-color;
+        border-bottom: $section-border-height solid mix($title-section-bg-color, $body-bg-color);
     }
 }
 
 footer {
-    background-color: $footer-bg;
+    background-color: $footer-bg-color;
+    border-top: $section-border-height solid mix($body-bg-color, $footer-bg-color);
 }

@@ -3,16 +3,25 @@
 ---
 @charset "utf-8";
 
-$heading-bg: white;
-$title-section-bg: white;
-$body-bg: white;
-$footer-bg: white;
+$heading-color: white;
+$heading-bg-color: #9ab87a;
+$title-section-bg-color: #708b75;
+$body-bg-color: #ddd8c4;
+$footer-bg-color: #444b6e;
 
+$standard-margin: 20px;
+$section-border-height: 4px;
 $footer-height: 60px;
 
-$navbar-default-bg: $heading-bg;
+$navbar-default-color: $heading-color;
+$navbar-default-link-color: $heading-color;
+$navbar-default-link-active-color: $heading-color;
+$navbar-default-bg: $heading-bg-color;
 $navbar-margin-bottom: 0;
+$navbar-default-border: mix($heading-bg-color, $title-section-bg-color);
 $navbar-border-radius: 0;
+
+$body-bg: $body-bg-color;
 
 @import "bootstrap";
 @import "base";
