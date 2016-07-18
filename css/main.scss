@@ -19,6 +19,7 @@ $navbar-default-color: $heading-color;
 $navbar-default-link-color: $heading-color;
 $navbar-default-link-active-color: $heading-color;
 $navbar-default-link-hover-color: $heading-color;
+$navbar-default-link-hover-bg: darken($heading-bg-color, 5%);
 $navbar-default-bg: $heading-bg-color;
 $navbar-margin-bottom: 0;
 $navbar-default-border: mix($heading-bg-color, $title-section-bg-color);

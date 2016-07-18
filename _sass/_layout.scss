@@ -1,3 +1,15 @@
+#navbar-dropdown {
+    position: fixed;
+    top: $navbar-height + $section-border-height;
+    right: 0;
+    z-index: 1;
+    min-width: 33%;
+
+    @media (min-width: $screen-sm-min) {
+        display: none;
+    }
+}
+
 main {
     padding-top: $navbar-height + $section-border-height;
 }

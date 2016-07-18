@@ -32,6 +32,21 @@
     }
 }
 
+#navbar-dropdown {
+    background-color: $heading-bg-color;
+
+    a {
+        background-color: $heading-bg-color;
+        color: $heading-color;
+        border: 1px solid mix($heading-bg-color, $title-section-bg-color);
+        border-radius: 0;
+    }
+
+    a:hover {
+        background-color: $navbar-default-link-hover-bg;
+    }
+}
+
 main {
     header {
         color: $title-section-color;
