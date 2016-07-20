@@ -5,8 +5,10 @@
 
 $font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
+$brand-primary: #4f993d;
+
 $heading-color: white;
-$heading-bg-color: #4f993d;
+$heading-bg-color: $brand-primary;
 $title-section-color: white;
 $title-section-bg-color: #87bba2;
 $body-bg-color: #e8f1f2;

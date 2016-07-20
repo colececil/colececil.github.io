@@ -19,6 +19,28 @@ body {
     margin-bottom: $footer-height + $section-border-height;
 }
 
+main {
+    h1 {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+}
+
+#posts {
+    li {
+        margin-top: $standard-margin;
+        padding: 15px;
+    }
+
+    h2 {
+        margin: 0;
+    }
+
+    .post-date {
+        margin-bottom: $standard-margin / 2;
+    }
+}
+
 footer {
     position: absolute;
     bottom: 0;

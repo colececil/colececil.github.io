@@ -16,15 +16,17 @@ layout: default
         <div class="row">
             <div class="col-xs-12">
                 <h1>Posts</h1>
-                <ul class="list-unstyled">
+                <ul id="posts" class="list-unstyled">
                     {% for post in site.posts %}
                         <li>
                             <h2>
                                 <a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a>
                             </h2>
-                            <div>{{post.date | date: "%b %-d, %Y"}}</div>
-                            <div>{{post.excerpt}}</div>
-                            <a class="btn btn-default" href="{{post.url | prepend: site.baseurl}}">Read More</a>
+                            <div class="post-date">{{post.date | date: "%b %-d, %Y"}}</div>
+                            <div class="post-excerpt">{{post.excerpt}}</div>
+                            <a class="btn btn-default" href="{{post.url | prepend: site.baseurl}}">
+                                Read More
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>
