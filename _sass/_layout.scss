@@ -48,6 +48,10 @@ footer {
     bottom: 0;
     height: $footer-height + $section-border-height;
     width: 100%;
+
+    .copyright {
+        margin-top: ($footer-height - $line-height-computed) / 2;
+    }
 }
 
 h1 {
