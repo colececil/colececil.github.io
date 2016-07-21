@@ -35,9 +35,11 @@ main {
     h2 {
         margin: 0;
     }
+}
 
-    .post-date {
-        margin-bottom: $standard-margin / 2;
+article {
+    header {
+        margin-bottom: $standard-margin;
     }
 }
 
@@ -55,4 +57,9 @@ h1 {
 .row {
     margin-top: $standard-margin;
     margin-bottom: $standard-margin;
+}
+
+time {
+    display: block;
+    margin-bottom: $standard-margin / 2;
 }

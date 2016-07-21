@@ -68,6 +68,7 @@ main {
     h1 {
         border-bottom: 3px dotted black;
     }
+
 }
 
 #posts {
@@ -77,7 +78,19 @@ main {
     }
 }
 
-.post-date {
+article {
+    header {
+        color: inherit;
+        background-color: inherit;
+        border-bottom: 3px dotted black;
+    }
+
+    h1 {
+        border-style: none;
+    }
+}
+
+time {
     font-style: italic;
     font-size: 12px;
 }
@@ -111,4 +124,13 @@ h2 {
 
 code {
     color: #6f5475;
+    border: 1px solid $pre-border-color;
+}
+
+pre code {
+    border-style: none;
+}
+
+code, pre {
+    background-color: white;
 }
