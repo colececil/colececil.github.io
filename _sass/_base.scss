@@ -55,7 +55,7 @@ main {
         border-bottom: $section-border-height solid mix($title-section-bg-color, $body-bg-color);
 
         h2 {
-            font-size: 25px;
+            font-size: 22px;
             font-weight: normal;
             margin-top: 0;
         }
@@ -110,6 +110,7 @@ footer {
     }
 
     .copyright {
+        font-size: 14px;
         font-style: italic;
     }
 }
