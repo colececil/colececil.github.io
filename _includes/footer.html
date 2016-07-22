@@ -1,6 +1,12 @@
 <footer>
     <div class="container">
-        <div class="copyright">&copy; 2016 Cole Cecil. All rights reserved.</div>
+        {% assign year = site.time | date: "%Y" %}
+        {% case year %}
+            {% when '2016' %}
+                <div class="copyright">&copy; 2016 Cole Cecil. All rights reserved.</div>
+            {% else %}
+                <div class="copyright">&copy; 2016-{{year}} Cole Cecil. All rights reserved.</div>
+        {% endcase %}
         <!-- <p>Follow me <a href="https://twitter.com/{{site.twitter_username}}">on Twitter</a>.</p> -->
         <!-- <p>Subscribe <a href="{{"/feed.xml" | prepend: site.baseurl}}">via RSS</a>.</p> -->
     </div>
