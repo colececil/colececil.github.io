@@ -25,7 +25,7 @@ layout: default
                             <time datetime="{{post.date | date_to_xmlschema}}">
                                 {{post.date | date: "%b %-d, %Y"}}
                             </time>
-                            <div class="post-excerpt">{{post.excerpt}}</div>
+                            <p class="post-excerpt">{{post.excerpt | remove: '<p>' | remove: '</p>'}}</p>
                             <a class="btn btn-default" href="{{post.url | prepend: site.baseurl}}">
                                 Read More
                             </a>
