@@ -78,6 +78,16 @@ main {
     }
 }
 
+.pager li > a {
+    background-color: $btn-default-bg;
+    border-color: $btn-default-border;
+}
+
+.pager li > a:hover {
+    background-color: darken($btn-default-bg, 10%);
+    border-color: darken($btn-default-border, 12%);
+}
+
 article {
     header {
         color: inherit;

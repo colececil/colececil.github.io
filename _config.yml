@@ -13,7 +13,11 @@ description: > # this means to ignore newlines until "baseurl:"
   to share the things I've learned.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://yourdomain.com" # the base hostname & protocol for your site
+paginate: 5
 twitter_username: colejcecil
 
 # Build settings
 markdown: kramdown
+
+# Plugins
+gems: ['jekyll-paginate']
