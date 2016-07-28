@@ -118,13 +118,21 @@ footer {
         text-decoration: underline;
     }
 
-    a:hover {
+    a:hover, a:focus {
         color: $footer-color;
     }
 
     .copyright {
         font-size: 14px;
         font-style: italic;
+    }
+
+    .follow {
+        font-size: 30px;
+
+        a {
+            text-decoration: none;
+        }
     }
 }
 

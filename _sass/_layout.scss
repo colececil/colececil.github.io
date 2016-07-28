@@ -53,6 +53,10 @@ footer {
     .copyright {
         margin-top: ($footer-height - $line-height-computed) / 2;
     }
+
+    .follow {
+        margin-top: ($footer-height - 43) / 2;
+    }
 }
 
 h1 {

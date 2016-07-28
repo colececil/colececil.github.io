@@ -3,11 +3,19 @@
         {% assign year = site.time | date: "%Y" %}
         {% case year %}
             {% when '2016' %}
-                <div class="copyright">&copy; 2016 Cole Cecil. All rights reserved.</div>
+                <div class="copyright pull-left">&copy; 2016 Cole Cecil. All rights reserved.</div>
             {% else %}
-                <div class="copyright">&copy; 2016-{{year}} Cole Cecil. All rights reserved.</div>
+                <div class="copyright pull-left">&copy; 2016-{{year}} Cole Cecil. All rights reserved.</div>
         {% endcase %}
-        <!-- <p>Follow me <a href="https://twitter.com/{{site.twitter_username}}">on Twitter</a>.</p> -->
-        <!-- <p>Subscribe <a href="{{"/feed.xml" | prepend: site.baseurl}}">via RSS</a>.</p> -->
+        <div class="follow pull-right">
+            <a href="https://twitter.com/{{site.twitter_username}}" target="_blank">
+                <span class="icon-twitter-square"></span>
+                <span class="sr-only">Follow me on Twitter</span>
+            </a>
+            <a href="{{"/feed.xml" | prepend: site.baseurl}}" target="_blank">
+                <span class="icon-rss-square"></span>
+                <span class="sr-only">RSS Feed</span>
+            </a>
+        </div>
     </div>
 </footer>
