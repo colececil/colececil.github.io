@@ -1,13 +1,6 @@
 <footer>
     <div class="container">
-        {% assign year = site.time | date: "%Y" %}
-        {% case year %}
-            {% when '2016' %}
-                <div class="copyright pull-left">&copy; 2016 Cole Cecil. All rights reserved.</div>
-            {% else %}
-                <div class="copyright pull-left">&copy; 2016-{{year}} Cole Cecil. All rights reserved.</div>
-        {% endcase %}
-        <div class="follow pull-right">
+        <div class="follow">
             <a href="https://twitter.com/{{site.twitter_username}}" target="_blank">
                 <span class="icon-twitter-square"></span>
                 <span class="sr-only">Follow me on Twitter</span>
@@ -16,6 +9,15 @@
                 <span class="icon-rss-square"></span>
                 <span class="sr-only">RSS Feed</span>
             </a>
+        </div>
+        <div class="copyright">
+            {% assign year = site.time | date: "%Y" %}
+            {% case year %}
+                {% when '2016' %}
+                    &copy; 2016 Cole Cecil. All rights reserved.
+                {% else %}
+                    &copy; 2016-{{year}} Cole Cecil. All rights reserved.
+            {% endcase %}
         </div>
     </div>
 </footer>

@@ -25,6 +25,10 @@ html {
 
 body {
     margin-bottom: $footer-height + $section-border-height;
+
+    @media (max-width: 399px) {
+        margin-bottom: $alternate-footer-height + $section-border-height;
+    }
 }
 
 main {
@@ -75,12 +79,29 @@ footer {
     height: $footer-height + $section-border-height;
     width: 100%;
 
+    @media (max-width: 399px) {
+        height: $alternate-footer-height + $section-border-height;
+    }
+
     .copyright {
-        margin-top: ($footer-height - $line-height-computed) / 2;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: ($footer-height - $line-height-computed) / 2;
+
+        @media (min-width: 400px) {
+            float: left;
+            margin-top: ($footer-height - $line-height-computed) / 2;
+        }
     }
 
     .follow {
+        text-align: center;
         margin-top: ($footer-height - 43) / 2;
+        margin-bottom: ($footer-height - 43) / 2;
+
+        @media (min-width: 400px) {
+            float: right;
+        }
     }
 }
 
