@@ -17,13 +17,7 @@
     }
 }
 
-.navbar-text {
-    margin-left: 0;
-}
-
 .navbar-brand {
-    padding-top: 0;
-
     img {
         border: 3px solid $heading-color;
         border-top-left-radius: 0;
@@ -59,19 +53,12 @@ main {
             font-size: 22px;
             font-weight: normal;
             border-style: none;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
-        p {
-            margin-bottom: 0;
         }
     }
 
     h1 {
         border-bottom: 3px solid $heading-bg-color;
     }
-
 }
 
 #posts {
@@ -96,7 +83,6 @@ article {
         color: inherit;
         background-color: inherit;
         border-bottom: 3px solid $heading-bg-color;
-        display: inline-block;
     }
 
     h1 {
