@@ -69,7 +69,7 @@ main {
     }
 
     h1 {
-        border-bottom: 3px dotted black;
+        border-bottom: 3px solid $heading-bg-color;
     }
 
 }
@@ -95,7 +95,8 @@ article {
     header {
         color: inherit;
         background-color: inherit;
-        border-bottom: 3px dotted black;
+        border-bottom: 3px solid $heading-bg-color;
+        display: inline-block;
     }
 
     h1 {
