@@ -11,13 +11,16 @@ description: > # this means to ignore newlines until "baseurl:"
   I'm Cole. I develop software for a living, and I also do it for fun in my free
   time. I write here about my personal projects, as well as creating tutorials
   to share the things I've learned.
+twitter_username: colejcecil
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://colececil.io" # the base hostname & protocol for your site
 paginate: 5
-twitter_username: colejcecil
+permalink: /blog/:year/:title/
 
 # Build settings
 markdown: kramdown
+timezone: America/Central
 
 # Plugins
 gems: ['jekyll-paginate']
