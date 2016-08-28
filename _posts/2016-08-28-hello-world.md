@@ -13,7 +13,7 @@ In case you don't know me, I'm a software developer that does web development fo
 
 ## How This Site Was Built
 
-I had some fun creating this site, and I learned some new stuff in the process. Here's where I did to create it:
+I had some fun creating this site, and I learned some new stuff in the process. Here's what I did to create it:
 
 - **Framework:** I used a static site generator called [Jekyll](http://jekyllrb.com/) to create this site. It's pretty cool, because once you use it to create the templates for all your different types of pages, you can add new content just by creating Markdown files. I'm a big fan of using plain text whenever possible, so I love using Markdown whenever I have to generate formatted text.
 - **Hosting:** This site is being hosted with [GitHub Pages](https://pages.github.com/), which has a couple of nice benefits. The first big one is that it's free. It also integrates with Jekyll, so all I have to do to update my site is make a commit to the master branch of my Git repository, and the new version of my site is generated for me. Pretty convenient!
