@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Hello, World!"
+date: 2016-08-28 17:53:00 -0500
 ---
 
 Hi, everyone! So I finally did it. I created a blog. I've never really aspired to become a blogger, but recently I've been considering it more and more. I finally decided to commit to it, give it a try, and see how it goes. Hopefully it works out well.
