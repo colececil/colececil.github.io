@@ -151,3 +151,9 @@ pre code {
 code, pre {
     background-color: white;
 }
+
+.video {
+    max-width: 650px;
+    margin-top: $standard-margin;
+    margin-bottom: $standard-margin;
+}

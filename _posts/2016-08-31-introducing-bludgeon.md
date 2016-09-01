@@ -6,7 +6,7 @@ date: 2016-08-31 01:28:00 -0500
 
 Earlier this year, the Iowa City Game Dev group that I'm a part of hosted a month-long game jam, with the theme being "sports which could never exist". I participated in the game jam and made a game called Bludgeon. It's a local multiplayer game featuring two knights riding birds while wielding flails. The goal is to knock the other player into the spikes on the edge of the screen. Survival is made more difficult by the fact that you can't control the direction your player is moving while using your weapon. Here's a video (of me vs. the AI player) from the game jam version of the game:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NweOQPDtkfE" frameborder="0" allowfullscreen></iframe>
+{% include youtube.html id="NweOQPDtkfE" %}
 
 I really liked the way the initial version of the game turned out (by the way, if you want to try the initial version, you can download it [here](https://ccecil.itch.io/bludgeon)). I had previously been working on a metroidvania game, but after some consideration, I decided to pursue Bludgeon right now instead. The reason is because I haven't commercially released a game yet, and I figured it would be better to have my first game be of a more manageable scope. That way, I can get more experience under my belt before taking on a larger project.
 
