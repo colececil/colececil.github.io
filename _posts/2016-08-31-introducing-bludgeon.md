@@ -8,7 +8,7 @@ Earlier this year, the Iowa City Game Dev group that I'm a part of hosted a mont
 
 {% include youtube.html id="NweOQPDtkfE" %}
 
-I really liked the way the initial version of the game turned out (by the way, if you want to try the initial version, you can download it [here](https://ccecil.itch.io/bludgeon)). I had previously been working on a metroidvania game, but after some consideration, I decided to pursue Bludgeon right now instead. The reason is because I haven't commercially released a game yet, and I figured it would be better to have my first game be of a more manageable scope. That way, I can get more experience under my belt before taking on a larger project.
+I really liked the way the initial version of the game turned out (by the way, if you want to try the initial version, you can download it [here](https://ccecil.itch.io/bludgeon-game-jam)). I had previously been working on a metroidvania game, but after some consideration, I decided to pursue Bludgeon right now instead. The reason is because I haven't commercially released a game yet, and I figured it would be better to have my first game be of a more manageable scope. That way, I can get more experience under my belt before taking on a larger project.
 
 ## My Experience Working on Bludgeon so Far
 
