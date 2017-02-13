@@ -14,6 +14,19 @@ layout: default
                 <div itemprop="articleBody">
                     {{content}}
                 </div>
+                <div id="comments">
+                    <div id="disqus_thread"></div>
+                    <script>
+                        (function() {
+                        var d = document, s = d.createElement('script');
+                        s.src = '//colececil.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        d.getElementById('comments').insertBefore(d.createElement("hr"),
+                            d.getElementById('disqus_thread'));
+                        (d.head || d.body).appendChild(s);
+                        })();
+                    </script>
+                </div>
             </div>
         </div>
     </div>

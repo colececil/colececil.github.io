@@ -152,6 +152,11 @@ code, pre {
     background-color: white;
 }
 
+hr {
+    height: 3px;
+    background-color: $heading-bg-color;
+}
+
 .video {
     max-width: 650px;
     margin-top: $standard-margin;
