@@ -3,7 +3,7 @@ layout: post
 title: "Scaling Pixel Art Without Destroying It"
 ---
 
-When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since screen resolutions these days are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case and that it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but the issues come when scaling by a non-integer multiple. This causes problems because your texture pixels (in other words, the pixels in your artwork) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, it has to either round to the nearest whole pixel, or it has to blend different texture pixels into the same screen pixel. In the end, depending on the selected texture filter mode, this either ends up making some of the pixels in your pixel art bigger than others, or it makes them all blurry. Neither of these options look great, as seen in the example below:
+When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since screen resolutions are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case and that it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but the issues come when scaling by a non-integer multiple. This causes problems because your texture pixels (in other words, the pixels in your artwork, also known as **texels**) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, it has to either round to the nearest whole pixel, or it has to blend different texels into the same screen pixel. In the end, depending on the selected texture filter mode, this either ends up making some of the pixels in your pixel art bigger than others, or it makes them all blurry. Neither of these options look great, as seen in the example below:
 
 (insert example image here)
 
@@ -15,6 +15,28 @@ The pixel art scaling shader is sort of a mix between nearest neighbor filtering
 
 ### Nearest Neighbor Filtering
 
+Nearest neighbor filtering is the simplest way to scale an image. With this method, you're basically just taking the pixels from the texture and making them bigger to form the scaled image. This is done by giving a pixel in the scaled image the same color as the nearest texel.
+
+The algorithm for performing nearest neighbor filtering is illustrated in the diagram below. First, the texture is taken, represented by a point at the center of each of the texels. This is then stretched to the size of the final scaled image and overlaid onto it. Each pixel in the scaled image is also represented by a point in its center. Next, for each point in the scaled image, the nearest point in the texture is found. The pixel represented by the scaled image point takes the same color as the texel represented by the texture point.
+
+(insert diagram here)
+
+In the diagram above, the scaled image turns out perfectly, since it's an integer multiple of the texture (in this case, 2x, since the texture is 3x3 and the scaled image is 6x6). However, if the scaled image is not an integer multiple of the texture, the final product won't turn out quite right. See the diagram below for an example of this. Here, the texture is still 3x3, but the scaled image is 7x7. You can see that some of the pixels from the texture are bigger in the scaled image, since it's slightly larger than an integer multiple of the texture (2.333x).
+
+(insert diagram here)
+
 ### Bilinear Filtering
+
+With bilinear filtering, instead of making the texels bigger to form the scaled image, you're blending the colors of the texels in the space between them. The term *bilinear* refers to the blending of colors in both the x and y directions.
+
+As with nearest neighbor filtering, the bilinear filtering algorithm starts out by taking the set of points representing the texels, stretching it to the size of the scaled image, and overlaying it onto the set of points representing the pixels in the scaled image. Then, for each point in the scaled image, the four surrounding texel points are found. The colors of both pairs of texel points are first interpolated in one direction (either the x or y direction), so that the two new points are collinear with the point of the pixel being looked at. Finally, the color of the pixel is determined by interpolating the colors of the two new points at the location of the pixel point. See the diagram below for an illustration of this.
+
+One other thing to note here is that some pixels around the edge might not be surrounded by four texels. The way this is generally dealt with is by creating imaginary texels past the edges of the texture with the same colors as edge texels.
+
+(insert diagram here)
+
+Here, we scaled the same 3x3 texture to 6x6, as we did with nearest neighbor filtering. However, as we can see here, bilinear filtering produces a very blurry-looking result. This is not great for pixel art, obviously. However, there is one advantage to bilinear filtering, as seen in the diagram below (scaling the 3x3 texture to 7x7, as we did with nearest neighbor filtering). Even though the texture isn't scaled to an integer multiple, it still looks pretty uniform, rather than having some color blocks look wider than they should. This is due to the interpolation between colors that is done in bilinear filtering.
+
+(insert diagram here)
 
 ## Pixel Art Scaling Shader
