@@ -3,7 +3,7 @@ layout: post
 title: "Scaling Pixel Art Without Destroying It"
 ---
 
-When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since screen resolutions are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case and that it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but the issues come when scaling by a non-integer multiple. This causes problems because your texture pixels (in other words, the pixels in your artwork, also known as **texels**) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, it has to either round to the nearest whole pixel, or it has to blend different texels into the same screen pixel. In the end, depending on the selected texture filter mode, this either ends up making some of the pixels in your pixel art bigger than others, or it makes them all blurry. Neither of these options look great, as seen in the example below:
+When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since screen resolutions are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case and that it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but the issues come when scaling by a non-integer multiple. This causes problems because your texture pixels (in other words, the pixels in your artwork, also known as *texels*) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, it has to either round to the nearest whole pixel, or it has to blend different texels into the same screen pixel. In the end, depending on the selected texture filter mode, this either ends up making some of the pixels in your pixel art bigger than others, or it makes them all blurry. Neither of these options look great, as seen in the example below:
 
 (insert example image here)
 
@@ -40,3 +40,108 @@ Here, we scaled the same 3x3 texture to 6x6, as we did with nearest neighbor fil
 (insert diagram here)
 
 ## Pixel Art Scaling Shader
+
+Now that I've gone through how nearest neighbor and bilinear filtering work, I can go ahead and explain how the pixel art scaling shader works. As I mentioned earlier, this shader works by combining both nearest neighbor and bilinear filtering. For the most part, the shader uses nearest neighbor filtering, as this is best suited to pixel art. However, at the borders between texels, bilinear filtering is used. This is because, at these borders, there might be a screen pixel that contains parts of more than one texel. Remember, if we were to use nearest neighbor, that pixel would have to choose the color of only one of the texels, making the pixel art look distorted. The use of bilinear filtering here blends the colors of the texels that share the same pixel, making it look more natural. This will not cause a noticeable blur, like pure bilinear filtering does, since we only use it at these borders. An example is shown in the diagram below.
+
+(insert diagram here)
+
+### Shader Code
+
+Now that I've explained how the shader works conceptually, I'll go through the code. Note that the code I'm showing is for Unity, but it should be relatively straightforward to translate it to something that works with another game engine or graphics library.
+
+I'll try to explain the code pretty clearly, but if you don't have any experience with shaders, it might be a good idea to read up on them. When I was learning how to write shaders in Unity, I found [this Cg Programming Wikibook](https://en.wikibooks.org/wiki/Cg_Programming) to be an extremely helpful resource. Unity also has [some helpful examples in their documentation](https://docs.unity3d.com/Manual/SL-VertexFragmentShaderExamples.html).
+
+#### Vertex Shader
+
+Here is the code for the vertex shader:
+
+```hlsl
+vertexOutput vertexShader(vertexInput input)
+{
+    vertexOutput output;
+    output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
+    output.textureCoord = input.textureCoord * _MainTex_TexelSize.zw;
+    output.color = input.color;
+    return output;
+}
+```
+
+#### Fragment Shader
+
+Here is the code for the fragment shader:
+
+```hlsl
+fixed4 fragmentShader(vertexOutput input) : SV_Target
+{
+    float2 locationWithinTexel = frac(input.textureCoord);
+    float2 interpolationAmount = clamp(locationWithinTexel / texelsPerPixel, 0, .5)
+        + clamp((locationWithinTexel - 1) / texelsPerPixel + .5, 0, .5);
+    float2 finalTextureCoords = (floor(input.textureCoord) + interpolationAmount) / _MainTex_TexelSize.zw;
+    return tex2D(_MainTex, finalTextureCoords) * input.color;
+}
+```
+
+#### Entire Shader
+
+```hlsl
+Shader "Custom/PixelArtShader"
+{
+	Properties
+	{
+		_MainTex("Texture", 2D) = "" {}
+	}
+
+	SubShader
+	{
+		Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+		ZWrite Off
+		Blend SrcAlpha OneMinusSrcAlpha
+
+		Pass
+		{
+			CGPROGRAM
+			#pragma vertex vertexShader
+			#pragma fragment fragmentShader
+
+			sampler2D _MainTex;
+			float4 _MainTex_ST;
+			float4 _MainTex_TexelSize;
+			float texelsPerPixel;
+
+			struct vertexInput
+			{
+				float4 vertex : POSITION;
+				fixed4 color : COLOR;
+				float2 textureCoord : TEXCOORD0;
+			};
+
+			struct vertexOutput
+			{
+				float4 vertex : SV_POSITION;
+				fixed4 color : COLOR;
+				float2 textureCoord : TEXCOORD0;
+			};
+
+			vertexOutput vertexShader(vertexInput input)
+			{
+				vertexOutput output;
+				output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
+				output.textureCoord = input.textureCoord * _MainTex_TexelSize.zw;
+				output.color = input.color;
+				return output;
+			}
+
+			fixed4 fragmentShader(vertexOutput input) : SV_Target
+			{
+				float2 locationWithinTexel = frac(input.textureCoord);
+				float2 interpolationAmount = clamp(locationWithinTexel / texelsPerPixel, 0, .5)
+					+ clamp((locationWithinTexel - 1) / texelsPerPixel + .5, 0, .5);
+				float2 finalTextureCoords = (floor(input.textureCoord) + interpolationAmount) / _MainTex_TexelSize.zw;
+				return tex2D(_MainTex, finalTextureCoords) * input.color;
+			}
+
+			ENDCG
+		}
+	}
+}
+```
