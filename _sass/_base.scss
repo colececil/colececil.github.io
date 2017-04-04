@@ -139,17 +139,26 @@ h3 {
     font-size: 20px;
 }
 
-code {
-    color: #6f5475;
+.highlight {
     border: 1px solid $pre-border-color;
+    border-radius: $border-radius-large;
 }
 
-pre code {
-    border-style: none;
+pre.lineno {
+    border-right: 1px solid $pre-border-color;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.code pre {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
 }
 
 code, pre {
+    font-family: $font-family-mono;
     background-color: white;
+    border-style: none;
 }
 
 hr {

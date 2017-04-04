@@ -118,3 +118,20 @@ time {
     display: block;
     margin-bottom: $standard-margin / 2;
 }
+
+.highlight {
+    overflow-x: auto;
+
+    table {
+        width: 100%;
+    }
+
+    pre {
+        margin-bottom: 0;
+    }
+}
+
+pre.lineno {
+    padding-left: 10px;
+    padding-right: 10px;
+}
