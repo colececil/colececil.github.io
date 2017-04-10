@@ -139,6 +139,10 @@ h3 {
     font-size: 20px;
 }
 
+h4 {
+    font-size: 18px;
+}
+
 .highlight {
     border: 1px solid $pre-border-color;
     border-radius: $border-radius-large;
@@ -153,6 +157,10 @@ pre.lineno {
 .code pre {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+}
+
+p code {
+    color: #6f5475;
 }
 
 code, pre {

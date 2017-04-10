@@ -7,7 +7,7 @@ When I started using pixel art in game development, I assumed that it would easi
 
 (insert example image here)
 
-This led me to do a lot of googling to try to find a solution to the problem. Most resources I found said that you have to just stick with scaling by integer multiples if you want it to look good, but I was not satisfied with that answer. I knew I'd played plenty of pixel art games that could scale to my screen size and look just fine. So I kept searching, and I finally came across a great solution using a shader at a blog called [A Personal Wonderland](https://csantosbh.wordpress.com/2014/01/25/manual-texture-filtering-for-pixelated-games-in-webgl/). The author does a really nice job of explaining and illustrating the solution in a very mathematical way. It still took me awhile to understand how it works, but I got there, and I was able to implement it in a Unity shader. Since it's so hard to find information about how to solve this problem, I wanted to write a tutorial about it here, explaining it in a way that makes more sense to my brain, and also giving an example of the solution in Unity.
+This led me to do a lot of googling to try to find a solution to the problem. Most resources I found said that you have to just stick with scaling by integer multiples if you want it to look good, but I was not satisfied with that answer. I knew I'd played plenty of pixel art games that could scale to my screen size and look just fine. So I kept searching, and I finally came across a great solution using a shader at a blog called [A Personal Wonderland](https://csantosbh.wordpress.com/2014/01/25/manual-texture-filtering-for-pixelated-games-in-webgl/). The author does a really nice job of explaining and illustrating the solution in a very mathematical way. It still took me a while to understand how it works, but I got there, and I was able to implement it in a Unity shader. Since it's so hard to find information about how to solve this problem, I wanted to write a tutorial about it here, explaining it in a way that makes more sense to my brain, and also giving an example of the solution in Unity.
 
 ## Standard Scaling Approaches
 
@@ -51,97 +51,143 @@ Now that I've explained how the shader works conceptually, I'll go through the c
 
 I'll try to explain the code pretty clearly, but if you don't have any experience with shaders, it might be a good idea to read up on them. When I was learning how to write shaders in Unity, I found [this Cg Programming Wikibook](https://en.wikibooks.org/wiki/Cg_Programming) to be an extremely helpful resource. Unity also has [some helpful examples in their documentation](https://docs.unity3d.com/Manual/SL-VertexFragmentShaderExamples.html).
 
+#### Variables and Structs
+
+To start, here are the variables and stucts defined for the shader:
+
+```glsl
+sampler2D _MainTex;
+float4 _MainTex_TexelSize;
+float texelsPerPixel;
+
+struct vertexInput
+{
+  float4 vertex : POSITION;
+  fixed4 color : COLOR;
+  float2 textureCoord : TEXCOORD0;
+};
+
+struct vertexOutput
+{
+  float4 vertex : SV_POSITION;
+  fixed4 color : COLOR;
+  float2 textureCoord : TEXCOORD0;
+};
+```
+
+`_MainTex` is the texture to draw, which is passed into the shader through the `Properties` block. `_MainTex_TexelSize` represents the size in texels of the main texture. This is a predefined property set up by Unity, as described [here](https://docs.unity3d.com/Manual/SL-PropertiesInPrograms.html). `texelsPerPixel` is a value that we will set from a Unity script using [Shader.SetGlobalFloat](https://docs.unity3d.com/ScriptReference/Shader.SetGlobalFloat.html). As you can probably tell from the name, this variable represents the number of texels per screen pixel. We can calculate this by dividing the screen width/height by the width/height of the game's native resolution. If the aspect ratio of both are the same, you can use either width or height, but if the aspect ratios are different, you need to choose the dimension that doesn't get letterboxed or pillarboxed.
+
+The two structs defined here represent the input and output of the vertex shader. `vertexInput` contains the vertex position (in local space), the vertex color, and the texture coordinates (this represents the x and y positions of the texture that match up with the vertex). `vertexOutput` contains the vertex position (in clip space), the vertex color, and the texture coordinates.
+
 #### Vertex Shader
 
-Here is the code for the vertex shader:
+Moving on, let's discuss the code for the vertex shader. This is called for each vertex of the object the shader is rendering. Here, we're just getting the data in the format we'll need it in for the fragment shader:
 
-```hlsl
+```glsl
 vertexOutput vertexShader(vertexInput input)
 {
-    vertexOutput output;
-    output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
-    output.textureCoord = input.textureCoord * _MainTex_TexelSize.zw;
-    output.color = input.color;
-    return output;
+  vertexOutput output;
+  output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
+  output.textureCoord = input.textureCoord * _MainTex_TexelSize.zw;
+  output.color = input.color;
+  return output;
 }
 ```
+
+In line 4, we convert the vertex position from local space to clip space by multiplying it by the model view projection matrix. In line 5, we convert the texture coordinates from the range [0, 1] to the range [0, texture size]. The reason for this is, in the fragment shader, we'll need to know the texture coordinates in terms of texel position. Line 6 simply passes the input vertex color to the output.
 
 #### Fragment Shader
 
-Here is the code for the fragment shader:
+Now to the fragment shader, which is called for each pixel in order to calculate its color. This is where the main logic of the shader resides:
 
-```hlsl
+```glsl
 fixed4 fragmentShader(vertexOutput input) : SV_Target
 {
-    float2 locationWithinTexel = frac(input.textureCoord);
-    float2 interpolationAmount = clamp(locationWithinTexel / texelsPerPixel, 0, .5)
-        + clamp((locationWithinTexel - 1) / texelsPerPixel + .5, 0, .5);
-    float2 finalTextureCoords = (floor(input.textureCoord) + interpolationAmount) / _MainTex_TexelSize.zw;
-    return tex2D(_MainTex, finalTextureCoords) * input.color;
+  float2 locationWithinTexel = frac(input.textureCoord);
+  float2 interpolationAmount = clamp(locationWithinTexel / texelsPerPixel, 0,
+    .5) + clamp((locationWithinTexel - 1) / texelsPerPixel + .5, 0, .5);
+  float2 finalTextureCoords = (floor(input.textureCoord) +
+    interpolationAmount) / _MainTex_TexelSize.zw;
+  return tex2D(_MainTex, finalTextureCoords) * input.color;
 }
 ```
 
+Here's a simplified version of the logic we're implementing in this function:
+
+1. For the current screen pixel, find its location in relation to the nearest texels (line 3).
+2. Using this information, determine how much (if at all) we need to interpolate between the colors of the nearest texels (lines 4-5). This is where the algorithm decides whether to use nearest neighbor or bilinear filtering for the current pixel. No interpolation means it's using nearest neighbor filtering; interpolation means it's using bilinear filtering.
+3. Given the interpolation amount, calculate and return the color of the pixel (lines 6-8).
+
 #### Entire Shader
 
-```hlsl
+For reference, here is the complete code of the shader:
+
+```glsl
 Shader "Custom/PixelArtShader"
 {
-	Properties
-	{
-		_MainTex("Texture", 2D) = "" {}
-	}
+  Properties
+  {
+    _MainTex("Texture", 2D) = "" {}
+  }
 
-	SubShader
-	{
-		Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-		ZWrite Off
-		Blend SrcAlpha OneMinusSrcAlpha
+  SubShader
+  {
+    Tags
+    {
+      "Queue" = "Transparent"
+      "IgnoreProjector" = "True"
+      "RenderType" = "Transparent"
+    }
 
-		Pass
-		{
-			CGPROGRAM
-			#pragma vertex vertexShader
-			#pragma fragment fragmentShader
+    ZWrite Off
+    Blend SrcAlpha OneMinusSrcAlpha
 
-			sampler2D _MainTex;
-			float4 _MainTex_ST;
-			float4 _MainTex_TexelSize;
-			float texelsPerPixel;
+    Pass
+    {
+      CGPROGRAM
+      #pragma vertex vertexShader
+      #pragma fragment fragmentShader
 
-			struct vertexInput
-			{
-				float4 vertex : POSITION;
-				fixed4 color : COLOR;
-				float2 textureCoord : TEXCOORD0;
-			};
+      sampler2D _MainTex;
+      float4 _MainTex_TexelSize;
+      float texelsPerPixel;
 
-			struct vertexOutput
-			{
-				float4 vertex : SV_POSITION;
-				fixed4 color : COLOR;
-				float2 textureCoord : TEXCOORD0;
-			};
+      struct vertexInput
+      {
+        float4 vertex : POSITION;
+        fixed4 color : COLOR;
+        float2 textureCoord : TEXCOORD0;
+      };
 
-			vertexOutput vertexShader(vertexInput input)
-			{
-				vertexOutput output;
-				output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
-				output.textureCoord = input.textureCoord * _MainTex_TexelSize.zw;
-				output.color = input.color;
-				return output;
-			}
+      struct vertexOutput
+      {
+        float4 vertex : SV_POSITION;
+        fixed4 color : COLOR;
+        float2 textureCoord : TEXCOORD0;
+      };
 
-			fixed4 fragmentShader(vertexOutput input) : SV_Target
-			{
-				float2 locationWithinTexel = frac(input.textureCoord);
-				float2 interpolationAmount = clamp(locationWithinTexel / texelsPerPixel, 0, .5)
-					+ clamp((locationWithinTexel - 1) / texelsPerPixel + .5, 0, .5);
-				float2 finalTextureCoords = (floor(input.textureCoord) + interpolationAmount) / _MainTex_TexelSize.zw;
-				return tex2D(_MainTex, finalTextureCoords) * input.color;
-			}
+      vertexOutput vertexShader(vertexInput input)
+      {
+        vertexOutput output;
+        output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
+        output.textureCoord = input.textureCoord * _MainTex_TexelSize.zw;
+        output.color = input.color;
+        return output;
+      }
 
-			ENDCG
-		}
-	}
+      fixed4 fragmentShader(vertexOutput input) : SV_Target
+      {
+        float2 locationWithinTexel = frac(input.textureCoord);
+        float2 interpolationAmount = clamp(locationWithinTexel / texelsPerPixel,
+          0, .5) + clamp((locationWithinTexel - 1) / texelsPerPixel + .5, 0,
+          .5);
+        float2 finalTextureCoords = (floor(input.textureCoord) +
+          interpolationAmount) / _MainTex_TexelSize.zw;
+        return tex2D(_MainTex, finalTextureCoords) * input.color;
+      }
+
+      ENDCG
+    }
+  }
 }
 ```

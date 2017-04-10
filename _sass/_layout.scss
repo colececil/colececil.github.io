@@ -120,18 +120,19 @@ time {
 }
 
 .highlight {
+    margin-top: $standard-margin;
+    margin-bottom: $standard-margin;
     overflow-x: auto;
 
     table {
         width: 100%;
     }
 
+    td.gutter {
+        width: 1px;
+    }
+
     pre {
         margin-bottom: 0;
     }
-}
-
-pre.lineno {
-    padding-left: 10px;
-    padding-right: 10px;
 }
