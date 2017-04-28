@@ -19,6 +19,7 @@ paginate: 5
 permalink: /blog/:year/:title/
 
 # Build settings
+exclude: ["working-files"]
 markdown: kramdown
 highligher: rouge
 timezone: America/Central
