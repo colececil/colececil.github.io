@@ -34,7 +34,7 @@ The algorithm for performing nearest neighbor filtering is illustrated in the di
 
 In the diagram above, the scaled image turns out perfectly, since it's an integer multiple of the texture (in this case, 2x, since the texture is 3x3 and the scaled image is 6x6). However, if the scaled image is not an integer multiple of the texture, the final product won't turn out quite right. See the diagram below for an example of this. Here, the texture is still 3x3, but the scaled image is 7x7. You can see that some of the pixels from the texture are bigger in the scaled image, since it's slightly larger than an integer multiple of the texture (2.333x).
 
-(insert diagram here)
+![Diagram showing nearest neighbor](/images/scaling-pixel-art-without-destroying-it/nearest-neighbor-2.png)
 
 ### Bilinear Filtering
 
