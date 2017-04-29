@@ -44,17 +44,17 @@ As with nearest neighbor filtering, the bilinear filtering algorithm starts out 
 
 One other thing to note here is that some pixels around the edge might not be surrounded by four texels. The way this is generally dealt with is by creating imaginary texels past the edges of the texture with the same colors as edge texels.
 
-(insert diagram here)
+![Diagram showing bilinear](/images/scaling-pixel-art-without-destroying-it/bilinear-1.png)
 
 Here, we scaled the same 3x3 texture to 6x6, as we did with nearest neighbor filtering. However, as we can see here, bilinear filtering produces a very blurry-looking result. This is not great for pixel art, obviously. However, there is one advantage to bilinear filtering, as seen in the diagram below (scaling the 3x3 texture to 7x7, as we did with nearest neighbor filtering). Even though the texture isn't scaled to an integer multiple, it still looks pretty uniform, rather than having some color blocks look wider than they should. This is due to the interpolation between colors that is done in bilinear filtering.
 
-(insert diagram here)
+![Diagram showing bilinear](/images/scaling-pixel-art-without-destroying-it/bilinear-2.png)
 
 ## Pixel Art Scaling Shader
 
 Now that I've gone through how nearest neighbor and bilinear filtering work, we can move on to the pixel art scaling shader. As I mentioned earlier, this shader works by combining both nearest neighbor and bilinear filtering. For the most part, the shader uses nearest neighbor filtering, as this is best suited to pixel art. However, at the borders between texels, bilinear filtering is used. This is because, if a screen pixel is situated at one of these borders, it would contain parts of more than one texel. Remember, if we were to use nearest neighbor, that pixel would have to choose the color of only one of the texels, making the pixel art look distorted. The use of bilinear filtering here blends the colors of the texels that share the same pixel, making it look more natural. This will not cause a noticeable blur, like pure bilinear filtering does, since we only use it at these borders. An example is shown in the diagram below.
 
-(insert diagram here)
+![Diagram showing pixel art shader](/images/scaling-pixel-art-without-destroying-it/pixel-art-shader.png)
 
 ### Shader Code
 
