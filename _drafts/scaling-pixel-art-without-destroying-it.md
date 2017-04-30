@@ -5,14 +5,14 @@ title: "Scaling Pixel Art Without Destroying It"
 
 When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since screen resolutions are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case -- it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but there are issues when scaling by a non-integer multiple. This causes problems because your texture pixels (in other words, the pixels in your artwork, also known as *texels*) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, it has to either round to the nearest whole pixel, or it has to blend different texels into the same screen pixel. In the end, depending on the selected texture filter mode, this either ends up making some of the pixels in your pixel art bigger than others, or it makes them all blurry. Neither of these options look great, as seen in the example below:
 
-<figure>
+<figure class="nonresponsive-figure" style="max-width: 422px;">
     <img src="/images/scaling-pixel-art-without-destroying-it/pixel-shader-example.gif" alt="Example"/>
     <figcaption>
         <table width="422px">
             <tr>
-                <td width="33%" style="text-align: center; font-family: Merriweather;">Distorted</td>
-                <td width="33%" style="text-align: center; font-family: Merriweather;">Good</td>
-                <td width="33%" style="text-align: center; font-family: Merriweather;">Blurry</td>
+                <td width="33%" class="text-center">Distorted</td>
+                <td width="33%" class="text-center">Good</td>
+                <td width="33%" class="text-center">Blurry</td>
             </tr>
         </table>
     </figcaption>

@@ -71,6 +71,28 @@ article {
             padding-bottom: 0;
         }
     }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    img, .video, figure {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: $standard-margin;
+        margin-bottom: $standard-margin;
+    }
+
+    .nonresponsive-figure {
+        overflow-x: auto;
+
+        img {
+            max-width: none;
+            margin: 0;
+        }
+    }
 }
 
 footer {
