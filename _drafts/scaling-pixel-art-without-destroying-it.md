@@ -3,7 +3,7 @@ layout: post
 title: "Scaling Pixel Art Without Destroying It"
 ---
 
-When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since modern screen resolutions are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case -- it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but there are issues when scaling by a non-integer multiple. This causes problems because the texture pixels (in other words, the pixels in the artwork, also known as *texels*) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, it has to either round to the nearest whole pixel, or it has to blend different texels into the same screen pixel. Choosing one of the two standard texture scaling modes will end up either making some of the pixels in the pixel art bigger than others or making them all blurry. Neither of these options look great, as seen in the example below.
+When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since modern screen resolutions are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case -- it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but there are issues when scaling by a non-integer multiple. This causes problems because the texture pixels (in other words, the pixels in the artwork, also known as *texels*) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, the rendering has to either round to the nearest whole pixel, or it has to blend different texels into the same screen pixel. Choosing one of the two standard texture scaling modes will end up either making some of the pixels in the pixel art bigger than others or making them all blurry. Neither of these options look great, as seen in the example below.
 
 <figure class="nonresponsive-figure" style="max-width: 422px;">
     <img src="/images/scaling-pixel-art-without-destroying-it/pixel-shader-example.gif"
@@ -19,11 +19,11 @@ When I started using pixel art in game development, I assumed that it would easi
     </figcaption>
 </figure>
 
-This led me to do a lot of googling to try to find a solution to the problem. Most resources I found claimed that you have to stick with scaling by integer multiples if you want it to look good, but I knew I'd played plenty of pixel art games that could scale to my screen size and look just fine. So I kept searching, and I finally came across a great solution using a shader (this is the "Good" version in the example image above), described at a blog called [A Personal Wonderland](https://csantosbh.wordpress.com/2014/01/25/manual-texture-filtering-for-pixelated-games-in-webgl/). The author does a really nice job of explaining and illustrating the solution in a very mathematical way. It still took me a while to understand how it works, but I figured it out and was able to implement it in a Unity shader. Since it's so hard to find information about how to solve this problem, I decided to write this tutorial about it, explaining it in a way that makes more sense to my brain (and hopefully others'), and also giving an example of the solution in Unity.
+This led me to do a lot of googling to try to find a solution to the problem. Most resources I found claimed that you have to stick with scaling by integer multiples if you want it to look good, but I knew I'd played plenty of pixel art games that could scale to my screen size and look just fine. So I kept searching, and I finally came across a great solution using a shader (this is the "Good" version in the example image above), described at a blog called [A Personal Wonderland](https://csantosbh.wordpress.com/2014/01/25/manual-texture-filtering-for-pixelated-games-in-webgl/). The author does a really nice job of explaining and illustrating the solution in a very mathematical way. It still took me a while to understand how it works, but I figured it out and was able to implement it in a Unity shader. Since it was so hard to find information about how to solve this problem, I decided to write this tutorial about scaling pixel art, explaining it in a way that makes more sense to my brain (and hopefully others'), and also giving an example of the solution in Unity.
 
 ## Standard Scaling Approaches
 
-The pixel art scaling shader is sort of a mix between the two standard scaling approaches: nearest neighbor filtering and bilinear filtering. Since fully understanding how this works depends on understanding these two filtering approaches, I'm going to first spend some time explaining them.
+The pixel art scaling shader is sort of a mix between the two standard scaling approaches: nearest neighbor filtering and bilinear filtering. Since fully understanding how the shader works depends on understanding these two filtering approaches, I'm going to first spend some time explaining them.
 
 ### Nearest Neighbor Filtering
 
@@ -47,7 +47,7 @@ One other thing to note here is that some pixels around the edge might not be su
 
 ![Diagram showing bilinear filtering](/images/scaling-pixel-art-without-destroying-it/bilinear-1.png)
 
-Here, we scaled the same 3x3 texture to 6x6, as we did with nearest neighbor filtering. However, as you can see, bilinear filtering produces a very blurry-looking result. This is not great for pixel art, obviously. However, there is one advantage to bilinear filtering, as seen in the diagram below (scaling the 3x3 texture to 7x7, as we did with nearest neighbor filtering). Even though the texture isn't scaled to an integer multiple, it still looks uniform, rather than having the texels show up in different sizes and shapes.
+Here, I scaled the same 3x3 texture to 6x6, as I did with nearest neighbor filtering. However, as you can see, bilinear filtering produces a very blurry-looking result. This is not great for pixel art, obviously. However, there is one advantage to bilinear filtering, as seen in the diagram below (scaling the 3x3 texture to 7x7, like I did with nearest neighbor filtering). Even though the texture isn't scaled to an integer multiple, it still looks uniform, rather than having the texels show up in different sizes and shapes.
 
 ![Diagram showing bilinear filtering](/images/scaling-pixel-art-without-destroying-it/bilinear-2.png)
 
@@ -87,13 +87,15 @@ struct vertexOutput
 };
 ```
 
-`_MainTex` is the texture to draw, which is passed into the shader through the `Properties` block. `_MainTex_TexelSize` represents the size in texels of the main texture. This is a predefined property set up by Unity, as described [here](https://docs.unity3d.com/Manual/SL-PropertiesInPrograms.html). `texelsPerPixel` is a value that we will set from a Unity script using [Shader.SetGlobalFloat](https://docs.unity3d.com/ScriptReference/Shader.SetGlobalFloat.html). As you can probably tell from the name, this variable represents the number of texels per screen pixel. We can calculate this by dividing the screen width/height by the width/height of the game's native resolution. If the aspect ratio of both are the same, you can use either width or height, but if the aspect ratios are different, you need to choose the dimension that doesn't get letterboxed or pillarboxed.
+`_MainTex` is the texture to draw, which is passed into the shader through the `Properties` block. `_MainTex_TexelSize` represents the size in texels of the main texture. This is a predefined property set up by Unity, as described [here](https://docs.unity3d.com/Manual/SL-PropertiesInPrograms.html). `texelsPerPixel` is a value that we will set from a Unity script using [Shader.SetGlobalFloat](https://docs.unity3d.com/ScriptReference/Shader.SetGlobalFloat.html). As you can probably tell from the name, this variable represents the number of texels per screen pixel. We can calculate this value by dividing the screen width/height by the width/height of the game's native resolution. If the aspect ratio of both the screen and the game's native resolution are the same, you can use either the width or the height, but if the aspect ratios are different, you need to choose the dimension that doesn't get letterboxed or pillarboxed.
 
-The two structs defined here represent the input and output of the vertex shader. `vertexInput` contains the vertex position (in local space), the vertex color (which comes from the material color set in Unity), and the texture coordinates (which represent the x and y positions of the texture that match up with the vertex). `vertexOutput` contains the vertex position (in clip space), the vertex color, and the texture coordinates.
+The two `structs` defined here represent the input and output of the vertex shader. `vertexInput` contains the vertex position (in local space), the vertex color (which comes from the material color set in Unity), and the texture coordinates (which represent the x and y positions of the texture that match up with the vertex). `vertexOutput` contains the vertex position (in clip space), the vertex color, and the texture coordinates.
 
 #### Vertex Shader
 
-Moving on, let's discuss the code for the vertex shader. This is called for each vertex of the object the shader is rendering. Here, we're just getting the data in the format we'll need it in for the fragment shader.
+Moving on, let's discuss the code for the vertex shader. The vertex shader is executed for each vertex of the object the shader is rendering. Here, we're just getting the data in the format we'll need it in for the fragment shader.
+
+*Note: The code for the vector shader and fragment shader is based on logic from [A Personal Wonderland](https://csantosbh.wordpress.com/2014/01/25/manual-texture-filtering-for-pixelated-games-in-webgl/).*
 
 ```glsl
 vertexOutput vertexShader(vertexInput input)
@@ -106,11 +108,11 @@ vertexOutput vertexShader(vertexInput input)
 }
 ```
 
-In line 4, we convert the vertex position from local space to clip space by multiplying it by the model view projection matrix (this is a pretty standard operation to perform in vertex shaders). In line 5, we convert the texture coordinates from the range [0, 1] to the range [0, texture size]. We do this because, in the fragment shader, we'll need to know the texture coordinates in terms of texel position. Line 6 simply passes the input vertex color to the output.
+In line 4, we convert the vertex position from local space to clip space by multiplying it by the model view projection matrix. This is a pretty standard operation to perform in vertex shaders. In line 5, we convert the texture coordinates from the range [0, 1] to the range [0, texture size]. We do this because, in the fragment shader, we'll need to know the texture coordinates in terms of texel position. Line 6 simply passes the input vertex color to the output.
 
 #### Fragment Shader
 
-Now to the fragment shader, which is called for each pixel in order to calculate its color. This is where the main logic of the shader resides.
+Now to the fragment shader, which is executed for each pixel in order to calculate its color. This is where the main logic of the shader resides.
 
 ```glsl
 fixed4 fragmentShader(vertexOutput input) : SV_Target
