@@ -66,7 +66,7 @@ I'll try to explain the code pretty clearly, but if you don't have any experienc
 
 #### Variables and Structs
 
-To start, here are the variables and stucts defined for the shader:
+To start, here are the variables and `structs` defined for the shader:
 
 ```glsl
 sampler2D _MainTex;
