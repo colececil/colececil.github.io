@@ -141,7 +141,7 @@ time {
     margin-bottom: $standard-margin / 2;
 }
 
-.highlight {
+div.highlight {
     margin-top: $standard-margin;
     margin-bottom: $standard-margin;
     overflow-x: auto;
@@ -150,11 +150,19 @@ time {
         width: 100%;
     }
 
-    td.gutter {
+    td.rouge-gutter {
         width: 1px;
     }
 
     pre {
         margin-bottom: 0;
     }
+
+    pre.highlight {
+        padding: 0;
+    }
+}
+
+pre.lineno {
+    text-align: right;
 }

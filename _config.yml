@@ -22,7 +22,7 @@ permalink: /blog/:year/:title/
 exclude: ["working-files"]
 markdown: kramdown
 highligher: rouge
-timezone: America/Central
+timezone: America/Chicago
 
 kramdown:
   input: GFM
@@ -36,4 +36,4 @@ kramdown:
       start_line: 1
 
 # Plugins
-gems: ['jekyll-paginate']
+plugins: ['jekyll-paginate']
