@@ -8,7 +8,7 @@ I've been interested in the idea of composing music for quite a while, and being
 
 After my first attempt at writing music, I was happy to find out I was able to do it! It's not as hard as I thought it might be, but it's still pretty tough sometimes. Here is my first attempt at writing a song:
 
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/323167321&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
+{% include soundcloud.html id="323167321" %}
 
 I didn't learn much about music growing up, so my first step was to learn more about how music works. A few years ago, I read an introductory book on music theory. I believe it was [Music Theory for Computer Musicians](https://www.goodreads.com/book/show/6486885-music-theory-for-computer-musicians), if I remember correctly. It helped me a lot in understanding how music works and the building blocks that it's made of. I think this is around the time when I started thinking of trying to write music, but I didn't actually get to trying it for a few years. In the meantime, I just tried to think about music more as I listened to it, and I tried to figure out what made good music good.
 
@@ -16,4 +16,4 @@ Eventually, I came across [a free music making tutorial by Ableton](https://lear
 
 After I successfully wrote my first song, I decided to try writing a main menu theme for Bludgeon, the game I'm making. I was aiming for a medieval-sounding song. For this one, I actually came up with part of the melody in my head while doing the dishes one day. For most of the songs I've written so far, I didn't come up with a melody ahead of time, but kind of just came across one by putting random-ish notes in the DAW, and then adjusting them until I had something that sounded good. Here's the Bludgeon main menu theme I ended up writing:
 
-<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/333500214&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true"></iframe>
+{% include soundcloud.html id="333500214" %}
