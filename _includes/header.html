@@ -1,3 +1,4 @@
+{% assign sorted_pages = site.pages | sort: "sort-order" %}
 <header>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -23,11 +24,11 @@
                             Blog
                         </a>
                     </li>
-                    {% for my_page in site.pages %}
-                        {% if my_page.title %}
+                    {% for page in sorted_pages %}
+                        {% if page.title %}
                             <li>
-                                <a class="page-link" href="{{my_page.url | prepend: site.baseurl}}">
-                                    {{my_page.title}}
+                                <a class="page-link" href="{{page.url | prepend: site.baseurl}}">
+                                    {{page.title}}
                                 </a>
                             </li>
                         {% endif %}
@@ -40,10 +41,10 @@
         <a class="list-group-item" href="{{site.baseurl}}/">
             Blog
         </a>
-        {% for my_page in site.pages %}
-            {% if my_page.title %}
-                <a class="list-group-item" href="{{my_page.url | prepend: site.baseurl}}">
-                    {{my_page.title}}
+        {% for page in sorted_pages %}
+            {% if page.title %}
+                <a class="list-group-item" href="{{page.url | prepend: site.baseurl}}">
+                    {{page.title}}
                 </a>
             {% endif %}
         {% endfor %}

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About Me
+sort-order: 2
 ---
 
 Hi! I'm Cole Cecil. I work as a software developer, specifically in web development. Due to my love of video games, I also do some game development in my free time. I live in Iowa with my awesome wife Kezia (she's a linguist, and she does really interesting stuff involving languages and brains) and our two cats. I have a bachelor's degree in computer science from the University of Iowa and a master's degree in computer science from the University of Southern California. I'm a quiet introvert and dislike being at the center of attention, but I really enjoy spending time with friends (as long as it's not too many at once!). I like learning new things and exploring the world around me (though I'm sure to bring plenty of hand sanitizer along if I venture too far off the beaten path). I try not to take myself too seriously, because that's too stressful.
