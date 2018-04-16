@@ -6,6 +6,8 @@ date: 2017-04-30 17:38:00 -0500
 
 When I started using pixel art in game development, I assumed that it would easily work at any screen resolution, since modern screen resolutions are much higher than the native resolution of a pixel art game. However, I quickly came to realize that this is not the case -- it's actually quite tricky to get pixel art to look correct when scaling it up by an arbitrary amount. It works fine when it's scaled by an integer multiple (2x, 3x, etc.), but there are issues when scaling by a non-integer multiple. This causes problems because the texture pixels (in other words, the pixels in the artwork, also known as *texels*) get scaled to fractional pixels on the screen. Because screens can't display fractional pixels, the rendering has to either round to the nearest whole pixel, or it has to blend different texels into the same screen pixel. Choosing one of the two standard texture scaling modes will end up either making some of the pixels in the pixel art bigger than others or making them all blurry. Neither of these options look great, as seen in the example below.
 
+<!--more-->
+
 <figure class="nonresponsive-figure" style="max-width: 422px;">
     <img src="/images/scaling-pixel-art-without-destroying-it/pixel-shader-example.gif"
         alt="Example showing pixel art scaling issues"/>

@@ -6,6 +6,8 @@ date: 2016-08-28 17:53:00 -0500
 
 Hi, everyone! So I finally did it. I created a blog. I've never really aspired to become a blogger, but recently I've been considering it more and more. I finally decided to commit to it, give it a try, and see how it goes. Hopefully it works out well.
 
+<!--more-->
+
 In case you don't know me, I'm a software developer that does web development for a living. I'm also very interested in game development, which I've been messing around with in my free time for quite a while now. In fact, more than anything else, it's the game dev stuff that really got me to consider starting this blog. I think I've built up my game dev skills to the point where I'm ready to try to create a finished game to sell. And since I'm aspiring to do that, I figured it would be a good idea to establish more of an online presence and hopefully get a bit of a following as I develop my game. So a lot of the stuff I post on here will probably be related to game development, but there might be other stuff as well. In short, here's what I'm hoping to accomplish with my blog at this point:
 
 1. Share information and updates about projects I'm working on (games or other).

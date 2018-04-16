@@ -6,6 +6,8 @@ date: 2017-11-21 20:35:00 -0500
 
 I've recently been working on updating the background art for Bludgeon. For quite a while, I've been using a very boring, plain, brick wall as the background during combat (you can see what it used to look like in [this video](https://youtu.be/NweOQPDtkfE)). This was fine for initial versions of the game, but I really wanted to make something nicer. I decided to start out by making a dungeon, though I'm planning to eventually make several different levels to fight in.
 
+<!--more-->
+
 My first step was to brainstorm about ideas of what would be in a dungeon, specifically a dungeon in the world of Bludgeon. Since the gameplay of Bludgeon is heavily focused on birds, I thought of making the game world very bird-centric as well. Because of this, I tried to think of how birds or bird-like figures could be displayed in a dungeon background. The initial idea I came up with was to have stone pillars between cells that had bird-like feet at the bottom. I also wanted to put some bird statues in the dungeon. With that in mind, I spend some time drawing and came up with this concept art:
 
 ![Dungeon concept art](/images/building-a-dungeon/dungeon-concept-art.jpg)

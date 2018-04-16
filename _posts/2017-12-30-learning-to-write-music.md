@@ -6,6 +6,8 @@ date: 2017-12-30 20:50:00 -0600
 
 I've been interested in the idea of composing music for quite a while, and being able to write music was the last thing I wasn't sure I'd be able to do in order to make a video game on my own. Over the summer, I finally decided to give it a try and see how it worked out. I wasn't sure if I could do it, but I figured it couldn't hurt to try.
 
+<!--more-->
+
 After my first attempt at writing music, I was happy to find out I was able to do it! It's not as hard as I thought it might be, but it's still pretty tough sometimes. In my first attempt at writing a song, I wasn't really trying to write any particular type of song, and I wasn't writing the song for any particular purpose other than just to see if I *could* write a song. It turned out to have an ambient/sci-fi feel to it.
 
 {% include soundcloud.html id="323167321" %}

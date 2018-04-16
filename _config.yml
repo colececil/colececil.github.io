@@ -17,6 +17,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://colececil.io" # the base hostname & protocol for your site
 paginate: 5
 permalink: /blog/:year/:title/
+excerpt_separator: <!--more-->
 
 # Build settings
 exclude: ["working-files"]
