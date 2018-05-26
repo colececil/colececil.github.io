@@ -109,9 +109,12 @@ footer {
         color: $footer-color;
     }
 
-    .copyright {
+    .footer-text {
         font-size: 14px;
-        font-style: italic;
+
+        .copyright {
+            font-style: italic;
+        }
     }
 
     .follow {

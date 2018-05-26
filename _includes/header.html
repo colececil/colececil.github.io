@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     {% for page in sorted_pages %}
-                        {% if page.title %}
+                        {% if page.title and page.sort-order %}
                             <li>
                                 <a class="page-link" href="{{page.url | prepend: site.baseurl}}">
                                     {{page.title}}
@@ -42,7 +42,7 @@
             Blog
         </a>
         {% for page in sorted_pages %}
-            {% if page.title %}
+            {% if page.title and page.sort-order %}
                 <a class="list-group-item" href="{{page.url | prepend: site.baseurl}}">
                     {{page.title}}
                 </a>

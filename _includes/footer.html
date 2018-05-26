@@ -10,9 +10,12 @@
                 <span class="sr-only">RSS Feed</span>
             </a>
         </div>
-        <div class="copyright">
-            {% assign year = site.time | date: "%Y" %}
-            &copy; 2016-{{year}} Cole Cecil. All rights reserved.
+        <div class="footer-text">
+            <span class="copyright">
+                {% assign year = site.time | date: "%Y" %}
+                &copy; 2016-{{year}} Cole Cecil. All rights reserved.
+            </span>
+            | <a href="{{site.baseurl}}/privacy-policy">Privacy Policy</a>
         </div>
     </div>
 </footer>
