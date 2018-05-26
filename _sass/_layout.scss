@@ -48,6 +48,10 @@ main {
         padding-bottom: 5px;
         margin-bottom: 0;
     }
+
+    @media (max-width: 499px) {
+        margin-bottom: $alternate-footer-height + $section-border-height;
+    }
 }
 
 #posts {
@@ -101,7 +105,7 @@ footer {
     height: $footer-height + $section-border-height;
     width: 100%;
 
-    @media (max-width: 399px) {
+    @media (max-width: 499px) {
         height: $alternate-footer-height + $section-border-height;
     }
 
@@ -110,9 +114,20 @@ footer {
         margin-top: 0;
         margin-bottom: ($footer-height - $line-height-computed) / 2;
 
-        @media (min-width: 400px) {
+        @media (min-width: 500px) {
             float: left;
             margin-top: ($footer-height - $line-height-computed) / 2;
+        }
+
+        @media (max-width: 499px) {
+            .separator {
+                display: none;
+            }
+
+            .privacy {
+                display: block;
+                margin-top: ($footer-height - 43) / 2;
+            }
         }
     }
 
@@ -121,7 +136,7 @@ footer {
         margin-top: ($footer-height - 43) / 2;
         margin-bottom: ($footer-height - 43) / 2;
 
-        @media (min-width: 400px) {
+        @media (min-width: 500px) {
             float: right;
         }
     }
