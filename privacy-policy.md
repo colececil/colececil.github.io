@@ -7,7 +7,7 @@ I respect your privacy, and I have no interest in collecting or sharing your per
 
 ## Web Analytics
 
-I use [Clicky](https://clicky.com/){:target="_blank"} for the purpose of keeping track of traffic to this website. This tool collects information such as how many unique visitors I get, which pages they view, how they got here, and what browsers they use. This lets me find out if people are visiting my site, along with the best ways of getting them to come here. All of this data is anonymous. If, for some reason, you want to opt out of contributing to these analytics, you can enable the Do Not Track feature of your browser, or you can opt out [here](https://clicky.com/optout){:target="_blank"}. If you want to read Clicky's privacy policy, you can find it [here](https://clicky.com/terms/privacy){:target="_blank"}.
+I use [Clicky](https://clicky.com/){:target="_blank"} for the purpose of keeping track of traffic to this website. This tool collects information such as how many unique visitors I get, which pages they view, how they got here, and what browsers they use. All of this data is anonymous. If, for some reason, you want to opt out of contributing to these analytics, you can enable the Do Not Track feature of your browser, or you can opt out [here](https://clicky.com/optout){:target="_blank"}. If you want to read Clicky's privacy policy, you can find it [here](https://clicky.com/terms/privacy){:target="_blank"}.
 
 ## Comments
 
