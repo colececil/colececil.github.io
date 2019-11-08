@@ -20,6 +20,10 @@ The way I went about making this was by picking my favorite colors from the Blud
 
 Once I was finished creating my new color palette, I applied it to my existing artwork. In my opinion, it really helped with making the artwork look more cohesive and adding some needed contrast. Here are some images comparing the old versions with the new versions:
 
-**Insert images here.**
+![Old title screen compared with title screen](/images/color-palette-refinement/title-screen.png)
+
+![Old dungeon compared with new dungeon](/images/color-palette-refinement/dungeon.png)
+
+![Old world map compared with new world map](/images/color-palette-refinement/world-map.png)
 
 I think I picked a good point in time at which to go through this refinement process. I had enough existing art to be able to figure out what sorts of colors I wanted, but I didn't have so much art done that it would be a ton of work to update the colors using the new palette.
