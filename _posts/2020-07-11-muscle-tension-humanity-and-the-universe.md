@@ -6,7 +6,7 @@ date: 2020-07-11 21:00:00 -0500
 
 > *"Tension is our way of resisting the moment. It covers up our aliveness."*&nbsp;&nbsp;-Tara Brach
 
-Muscle tension has become very familiar to me over the past several years. Almost constantly, at least some of my muscles are in a state of tension. Driven by anxiety, it's my body's way of trying to feel like it's in control, trying to resist whatever dangers are out there (imagined or real). In a way, it helps me feel like I'm ready react to any danger that approaches. But it also prevents me from enjoying the moment, from seeing new things, from getting rest. It is not a desirable way to live.
+Muscle tension has become very familiar to me over the past several years. Almost constantly, at least some of my muscles are in a state of tension. Driven by anxiety, it's my body's way of trying to feel like it's in control, trying to resist whatever dangers are out there (imagined or real). In a way, it helps me feel like I'm ready to react to any danger that approaches. But it also prevents me from enjoying the moment, from seeing new things, from getting rest. It is not a desirable way to live.
 
 <!--more-->
 
