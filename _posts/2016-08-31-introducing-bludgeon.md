@@ -48,7 +48,7 @@ We had a really good turnout, and I got to see lots of different people play my 
 
 After watching a bunch of people play Bludgeon last weekend, I became more confident that I could make it into a game that's fun enough to feel good about selling. Reflecting on what's happened so far, I think another thing that ended up being successful for me was deciding to work on making the core gameplay more fun before adding more features. I think it's important to start with a good foundation before adding a bunch of stuff onto it.
 
-Thanks to everyone who showed up to last weekend's event and tried Bludgeon! And thanks to the Mill for hosting this event, as well as to [Eric Neuhaus](http://ericneuhaus.net/) for setting it up. By the way, here are links to some of the games demoed by other developers at the event (sorry if I missed anyone):
+Thanks to everyone who showed up to last weekend's event and tried Bludgeon! And thanks to the Mill for hosting this event, as well as to [Izzy Neuhaus](http://izzyneuha.us/) for setting it up. By the way, here are links to some of the games demoed by other developers at the event (sorry if I missed anyone):
 
 - [Crystal Control 2](http://store.steampowered.com/app/499580/) by Virtually Competent
 - [Ham's Labrynth](http://www.hamslabyrinth.com/) by BaladiDog Games
