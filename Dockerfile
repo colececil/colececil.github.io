@@ -1,4 +1,4 @@
-FROM jekyll/jekyll:3.7.3
+FROM jekyll/jekyll:3.8
 
 COPY --chown=jekyll:jekyll ./Gemfile ./Gemfile.lock ./
 RUN bundle install
