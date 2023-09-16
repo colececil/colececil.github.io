@@ -4,19 +4,21 @@ title: "Inventing a New Cryptid: Long Mary"
 date: 2023-09-16 12:30:00 -0500
 ---
 
-In this post, I want to share a unique journey; a bizarre alignment of fate, improvisation, creativity, and a snow drift shaped like a camel. This is *the* story of how my wife and I stumbled upon our latest creation: a new cryptid, Long Mary. So, buckle up as we navigate from our inception story, through our artistic trials and tribulations, and end with an SCP-esque twist, all with a touch of humor and earnest reflection.
+In this post, I want to share the story of a strange creature born from a bizarre alignment of white-knuckled fear, fatigue-fueled delirium, bullheaded creativity, a slightly-too-optimistic trust of technology, and yes - a camel-shaped snow drift. This is the story of Long Mary, a terrifying cryptid that captured my imagination (and my heart) last December.
 
 <!--more-->
 
 ## The Birth of a New Cryptid
 
-December last year, my wife and I were driving on some delightfully sketchy back roads in northern Pennsylvania, heading to visit her family for Christmas. Google Maps decided fun should be at the forefront of our drive, suggesting a "faster route". The fun (read: misdirection) really began when my eye caught an unusual shape. It looked like a camel lounging next to a mailbox. On a closer inspection, it turned out to be a snow drift. Soon after, we drove past a sign that read "Long Mary Road". Synapses fired, the idea was born, and the rest is, well...cryptid history.
+This all started when my wife and I were driving to upstate New York to visit her family for Christmas. We were on the last leg of our journey - it was getting dark, and we were starting to get impatient for the drive to be over with. In an unfortunate turn of events, we realized a little too late that Google Maps had taken us onto some slightly terrifying back roads in the mountains of northern Pennsylvania, in the interest of "a faster route". (Note: It wasn't. Not by a long shot.) I'm sure this route would have been enjoyable had it not been for the ominous darkness of night and the pavement's occasional dusting of snow, but as it was, these conditions made the steep hills and the narrow, winding roads much more treacherous than was ideal. I remember obediently making my GPS-mandated turn onto one particularly perilous-looking stretch of road and stating aloud, "Welp, we're gonna die". (This behavior may have been influenced by the fact that I'd recently listened to [this harrowing story told by MrBallen](https://youtu.be/7G8f-AMx9-w). The story definitely crossed my mind.)
+
+Anyway, at one point while we were navigating these hazardous roads, I noticed an unusual shape just off the road ahead, out of the corner of my eye. My first impression was that it was some strange, camel-shaped creature. On a closer inspection, it turned out to be a snow drift next to a mailbox. I laughed to myself and told my wife what I had seen. Soon after, we drove past a sign that read "Long Mary Road". Synapses fired, ideas formed, and the rest is cryptid history.
+
+![Depiction of Long Mary](/images/inventing-a-new-cryptid/long-mary-final.png)
 
 ## Visualizing Long Mary - Artistic Process
 
-Next, it was time to translate our spectral camel, *Long Mary*, from imagination into reality. And what a convoluted, yet rewarding, process it was! I opted for Stable Diffusion to aid me in this task.
-
-![Depiction of Long Mary](/images/inventing-a-new-cryptid/long-mary-final.png)
+During the subsequent week spent with family, I found that I couldn't get the idea out of my head. I found myself fixated on imagining what Long Mary might look like. I had recently been playing around with [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion), a machine learning model that can generate images from text prompts, and I thought it would be fun to try using it as part of the creative process. And what a convoluted process it ended up being!
 
 The platform provided me with image2image capabilities. Starting with a simple sketch—which was based off several initial images I created using Stable Diffusion prompts—I kept feeding results that caught my eye back into image2image until satisfaction hit.
 
