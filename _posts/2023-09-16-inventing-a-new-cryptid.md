@@ -18,22 +18,29 @@ Anyway, at one point while we were navigating these hazardous roads, I noticed a
 
 ## Visualizing Long Mary - Artistic Process
 
-During the subsequent week spent with family, I found that I couldn't get the idea out of my head. I found myself fixated on imagining what Long Mary might look like. I had recently been playing around with [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion), a machine learning model that can generate images from text prompts, and I thought it would be fun to try using it as part of the creative process. And what a convoluted process it ended up being!
+During the subsequent week spent with family, I found that I couldn't get the idea out of my head. I found myself fixated on imagining what Long Mary might look like up close. I had recently been playing around with [Stable Diffusion](https://en.wikipedia.org/wiki/Stable_Diffusion), a machine learning model that can generate images from text prompts, and I thought it would be fun to try using it as part of the creative process. And what a convoluted process it ended up being!
 
-The platform provided me with image2image capabilities. Starting with a simple sketch—which was based off several initial images I created using Stable Diffusion prompts—I kept feeding results that caught my eye back into image2image until satisfaction hit.
+### Step 1: Brainstorming
+
+My first step was to just see what kinds of ideas Stable Diffusion could come up with. It took some time and experimentation, but I eventually came up with a prompt that seemed to give me pretty good results. They didn't have the level of quality I was looking for in the final image, but it was good enough to get some good ideas.
+
+After generating many, many images, I selected some of my favorites, with the intention of incorporating elements of each of them into the final image. Here are the ones I selected:
+
+![Long Mary inspirations](/images/inventing-a-new-cryptid/long-mary-inspirations.png)
+
+As I mentioned, there were several prompt variations along the way, but here is one of its final iterations:
+
+> Photo of a cryptid, extremely long neck, so many vertebrae, short stubby legs, ugly misshapen head, a single hump on its back, long crooked fangs, matted fur, its fur is covered in snow, sasquatch, chupacabra, mange, crouching, crawling, dark snowy forest, trees, horror, creepy, grotesque, little nightmares, slightly blurry photo, nature photography, dusk, ultra realistic
+
+And here is the negative prompt that went with it:
+
+> hand drawn, illustrated, out of frame, hand drawn, cartoon, unreal engine
+
+### Step 2: Concept Sketch
 
 ![Concept sketch of Long Mary](/images/inventing-a-new-cryptid/long-mary-sketch.png)
 
-Admittedly, this process is far from efficient. However, in the chaos came clarity; the picture in my mind was now on screen. Here are some of the original Stable Diffusion images that inspired my sketch:
-
-![Long Mary inspiration 1](/images/inventing-a-new-cryptid/long-mary-inspiration-1.png)
-![Long Mary inspiration 2](/images/inventing-a-new-cryptid/long-mary-inspiration-2.png)
-![Long Mary inspiration 3](/images/inventing-a-new-cryptid/long-mary-inspiration-3.png)
-![Long Mary inspiration 4](/images/inventing-a-new-cryptid/long-mary-inspiration-4.png)
-
-So where does Long Mary reside, you ask? Here's the location on Google Maps that inspired our creation:
-
-![Screenshot of Long Mary's indigenous range on Google Maps](/images/inventing-a-new-cryptid/long-mary-location.png)
+### Step 3: Generation of Final Image
 
 ## A Twist: SCP Meets Long Mary
 
@@ -62,3 +69,5 @@ Creating Long Mary was a wild ride. The inception through a series of random eve
 I warmly invite your thoughts on Long Mary. Better yet, if you are inspired to invent your own cryptid, I'm intrigued to see your creations!
 
 So, did our random roadside sighting lead us astray or on a rewarding detour? Would you stumble upon a cryptid the next time you see a strangely shaped snow drift? Well, truth be told, only time—and Google Maps' faster route—can tell.
+
+![Map of Long Mary's approximate territory](/images/inventing-a-new-cryptid/long-mary-location.png)
