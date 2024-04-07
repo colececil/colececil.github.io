@@ -1,0 +1,6 @@
+{
+  "name": "colececil.github.io",
+  "sdk": "typescript",
+  "source": "dagger",
+  "engineVersion": "v0.11.0"
+}
