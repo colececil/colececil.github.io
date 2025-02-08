@@ -71,7 +71,6 @@ export class ColececilGithubIo {
    *
    * @returns The build container.
    */
-  @func()
   private container(): Container {
     return dag
         .container()
