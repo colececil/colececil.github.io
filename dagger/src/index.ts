@@ -75,6 +75,7 @@ export class ColececilGithubIo {
     return dag
         .container()
         .from('jekyll/jekyll:3.8')
+        .withMountedCache('/usr/local/bundle', dag.cacheVolume('rubygems-cache'))
         .withFiles('/srv/jekyll', [this.gemfileFile, this.gemfileLockFile])
         .withExec(['bundle', 'install'])
         .withMountedDirectory('/srv/jekyll', this.src);
