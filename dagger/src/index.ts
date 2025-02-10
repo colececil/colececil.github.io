@@ -67,6 +67,18 @@ export class ColececilGithubIo {
   }
 
   /**
+   * Update dependencies to their latest versions that meet the Gemfile specifications.
+   *
+   * @returns The updated Gemfile.lock file.
+   */
+  @func()
+  public updateDependencies(): File {
+    return this.container()
+        .withExec(['bundle', 'update', '--all'])
+        .file('/srv/jekyll/Gemfile.lock');
+  }
+
+  /**
    * Get the build container.
    *
    * @returns The build container.
