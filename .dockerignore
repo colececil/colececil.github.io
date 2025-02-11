@@ -1,8 +1,0 @@
-.*
-
-_site
-.sass-cache
-.jekyll-metadata
-
-Dockerfile
-docker-compose.yml

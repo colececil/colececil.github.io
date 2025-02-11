@@ -7,10 +7,10 @@ export class ColececilGithubIo {
   private readonly src: Directory;
 
   public constructor(
-      @argument({defaultPath: '/Gemfile'}) gemfileFile: File,
-      @argument({defaultPath: '/Gemfile.lock'}) gemfileLockFile: File,
+      @argument({defaultPath: '/src/Gemfile'}) gemfileFile: File,
+      @argument({defaultPath: '/src/Gemfile.lock'}) gemfileLockFile: File,
       @argument({
-        defaultPath: '/',
+        defaultPath: '/src/',
         ignore: [
           '*',
           '!_includes/',
