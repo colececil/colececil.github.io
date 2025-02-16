@@ -1,0 +1,31 @@
+name: Build & Deploy
+on: push
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repo
+        id: checkoutRepo
+        uses: actions/checkout@v4.2.2
+      - name: Build static content
+        id: buildStaticContent
+        uses: dagger/dagger-for-github@v7.0.6
+        with:
+          version: '0.15.3'
+          verb: call
+          args: build export --path=./dist
+      - name: Check output
+        id: checkOutput
+        run: ls -al ./dist
+  deploy:
+    name: Deploy
+    if: ${{github.ref == 'refs/heads/master'}}
+    runs-on: ubuntu-latest
+    needs: build
+    timeout-minutes: 5
+    steps:
+      - name: Check workspace content
+        id: checkWorkspaceContent
+        run: ls -al
