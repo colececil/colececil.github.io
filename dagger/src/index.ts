@@ -88,8 +88,8 @@ export class ColececilGithubIo {
         .container()
         .from('jekyll/jekyll:3.8')
         .withMountedCache('/usr/local/bundle', dag.cacheVolume('rubygems-cache'))
-        .withFiles('/srv/jekyll', [this.gemfileFile, this.gemfileLockFile])
+        .withFiles('/srv/jekyll', [this.gemfileFile, this.gemfileLockFile], {owner: 'jekyll:jekyll'})
         .withExec(['bundle', 'install'])
-        .withMountedDirectory('/srv/jekyll', this.src);
+        .withMountedDirectory('/srv/jekyll', this.src, {owner: 'jekyll:jekyll'});
   }
 }
