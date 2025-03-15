@@ -5,23 +5,41 @@
 This project is built with the following technologies:
 
 - [Jekyll](https://jekyllrb.com/), for building the static content using HTML templates and Markdown files.
-- [Docker](https://www.docker.com/), for building and running the project locally.
-- [GitHub Pages](https://pages.github.com/), for building and hosting the project.
-- [CloudFlare](https://www.cloudflare.com/), for being able to use HTTPS with a custom domain on GitHub Pages (this might not be needed anymore).
+- [Dagger](https://dagger.io/), for containerized workflows that can be run both locally and in CI.
+- [GitHub Actions](https://github.com/features/actions), for building and deploying the project.
+- [GitHub Pages](https://pages.github.com/), for hosting the project.
 
-## Running the project locally
+## Development
 
-To run the project locally, run the command `docker-compose up` at the root directory. This will build the static content and serve it at [http://localhost:4000](http://localhost:4000). It will also watch the source files and recompile/reload the static content whenever anything changes.
+### Prerequisites
 
-## Updating the dependencies
+In order to run the project on your local machine, you'll need the following:
 
-To update the dependencies that are specified by `Gemfile.lock`, first start the project running locally in Docker, as shown in the previous section. After that, run the command `docker exec -it <containerId> bash`, where `<containerId>` is the ID of the container the project is running in. Once this logs you in to the running container, run the command `bundle update`. This will update the dependencies and the `Gemfile.lock` file.
+- **[Dagger CLI](https://docs.dagger.io/install) (v0.15.3+):** This is needed for running Dagger functions.
+- **[EditorConfig](https://editorconfig.org/):** This is a tool for helping maintain consistent code formatting between different editors. Some editors/IDEs come with it preinstalled, but for others, you'll need to download it as an extension. When it's installed, it will automatically read the project's `.editorconfig` file and use the settings it specifies.
 
-## Updating the Jekyll version
+### Running the project locally
+
+To run the project locally, run the command `dagger call dev-mode` at the root directory. This will build the static content and serve it at [http://localhost:4000](http://localhost:4000).
+
+_**Note:** Because of [current limitations in Dagger](https://github.com/dagger/dagger/issues/6990), this command will not watch the source files and recompile/reload the static content._
+
+### Building the project
+
+To build the project, run the command `dagger call build` at the root directory.
+
+### Updating the dependencies
+
+To update the dependencies that are specified by `src/Gemfile.lock`, run the command `dagger call update-dependencies` at the root directory.
+
+### Updating the Jekyll version
 
 To update the Jekyll version, do the following:
 
-- Modify the `Gemfile` to specify the version of Jekyll you want.
-- Modify the version of [the github-pages gem](https://rubygems.org/gems/github-pages/) specified in the `Gemfile` to the latest version compatible with the chosen Jekyll version.
-- Modify the version of [the Jekyll Docker image](https://hub.docker.com/r/jekyll/jekyll/) in the `Dockerfile` to the latest version compatible with the chosen Jekyll version.
-- Delete the contents of `Gemfile.lock`, to allow the dependencies to be regenerated based on the new Jekyll and github-pages versions. Do not remove the file entirely, as this will prevent the Docker image from building.
+- Modify `src/Gemfile` to specify the version of Jekyll you want.
+- Modify the version of [the Jekyll Docker image](https://hub.docker.com/r/jekyll/jekyll/) in the `container` function in `dagger/src/index.ts`.
+- Delete the contents of `src/Gemfile.lock`, to allow the dependencies to be regenerated based on the new Jekyll and github-pages versions. Do not remove the file entirely, as this will prevent the Docker image from building.
+
+## Deployment
+
+The project is automatically built (using the Dagger `build` function) and then deployed to GitHub Pages when a commit is pushed to the `master` branch.
