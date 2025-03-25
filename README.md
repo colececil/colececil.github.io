@@ -20,7 +20,7 @@ In order to run the project on your local machine, you'll need the following:
 
 ### Running the project locally
 
-To run the project locally, run the command `dagger call dev-mode` at the root directory. This will build the static content and serve it at [http://localhost:4000](http://localhost:4000).
+To run the project locally, run the command `dagger call dev-mode up` at the root directory. This will build the static content and serve it at [http://localhost:4000](http://localhost:4000).
 
 _**Note:** Because of [current limitations in Dagger](https://github.com/dagger/dagger/issues/6990), this command will not watch the source files and recompile/reload the static content._
 
