@@ -1,20 +1,28 @@
 <footer>
-    <div class="container">
-        <div class="follow">
-            <a href="{{"/feed.xml" | prepend: site.baseurl}}" target="_blank">
-                <span class="icon-rss-square"></span>
-                <span class="sr-only">RSS Feed</span>
-            </a>
-        </div>
-        <div class="footer-text">
-            <span class="copyright">
-                {% assign year = site.time | date: "%Y" %}
-                &copy; 2016-{{year}} Cole Cecil. All rights reserved.
-            </span>
-            <span class="separator"> | </span>
-            <span class="privacy">
-                <a href="{{site.baseurl}}/privacy-policy">Privacy Policy</a>
-            </span>
-        </div>
+  <div class="container">
+    <div class="follow">
+      <a href="https://bsky.app/profile/colececil.dev" target="_blank" aria-label="Bluesky Profile">
+        <span class="fa-brands fa-square-bluesky" aria-hidden="true"></span>
+      </a>
+      <a href="https://github.com/colececil" target="_blank" aria-label="GitHub Profile">
+        <span class="fa-brands fa-square-github" aria-hidden="true"></span>
+      </a>
+      <a href="https://www.linkedin.com/in/cole-cecil/" target="_blank" aria-label="LinkedIn Profile">
+        <span class="fa-brands fa-linkedin" aria-hidden="true"></span>
+      </a>
+      <a href="{{"/feed.xml" | prepend: site.baseurl}}" target="_blank" aria-label="RSS Feed">
+        <span class="fa-solid fa-square-rss" aria-hidden="true"></span>
+      </a>
     </div>
+    <div class="footer-text">
+      <span class="copyright">
+        {% assign year = site.time | date: "%Y" %}
+        &copy; 2016-{{year}} Cole Cecil. All rights reserved.
+      </span>
+      <span class="separator"> | </span>
+      <span class="privacy">
+        <a href="{{site.baseurl}}/privacy-policy">Privacy Policy</a>
+      </span>
+    </div>
+  </div>
 </footer>
